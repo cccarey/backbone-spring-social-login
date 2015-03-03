@@ -6,9 +6,9 @@ This app provides functions for user management and login using backbone.js & Ja
 
 UI adopted from the [backbone-webpy-openid](https://github.com/cccarey/backbone-webpy-openid) project.
 
-Started: 2015-03-03  
-Last Update: 2015-03-03  
-Author: cccarey  
+> Started: 2015-03-03  
+> Last Update: 2015-03-03  
+> Author: cccarey  
 
 # Service API
 
