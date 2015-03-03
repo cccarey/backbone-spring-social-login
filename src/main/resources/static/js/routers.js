@@ -21,7 +21,7 @@ define([
             initialize: function() {
                 this.info = new models.info({});
                 this.user = new models.user({ onNoAuth: this.onNoAuth });
-                this.pageInfo = new models.pageInfo({ app: "Backbone/Spring/Google OAuth 2" });
+                this.pageInfo = new models.pageInfo({ app: "Backbone/Spring/Google OAuth2" });
 
                 this.mainLayout = new views.mainLayout({ info: this.info, user: this.user, pageInfo: this.pageInfo });
             },
