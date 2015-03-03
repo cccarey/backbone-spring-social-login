@@ -6,10 +6,10 @@ import org.springframework.test.context.web.WebAppConfiguration;
 import org.springframework.boot.test.SpringApplicationConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
-import com.christiancarey.BSOpenidApplication;
+import com.christiancarey.BSGApplication;
 
 @RunWith(SpringJUnit4ClassRunner.class)
-@SpringApplicationConfiguration(classes = BSOpenidApplication.class)
+@SpringApplicationConfiguration(classes = BSGApplication.class)
 @WebAppConfiguration
 public class BSOpenidApplicationTests {
 
