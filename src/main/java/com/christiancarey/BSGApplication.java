@@ -6,7 +6,7 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.support.PropertySourcesPlaceholderConfigurer;
 
 @SpringBootApplication
-public class BSOpenidApplication {
+public class BSGApplication {
 
 	@Bean
 	public static PropertySourcesPlaceholderConfigurer propertyConfigIn() {
@@ -14,6 +14,6 @@ public class BSOpenidApplication {
 	}
 	
 	public static void main(String[] args) {
-        SpringApplication.run(BSOpenidApplication.class, args);
+        SpringApplication.run(BSGApplication.class, args);
     }
 }
