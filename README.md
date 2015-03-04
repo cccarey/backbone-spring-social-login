@@ -10,6 +10,12 @@ UI adopted from the [backbone-webpy-openid](https://github.com/cccarey/backbone-
 > **Last Update:** 2015-03-03  
 > **Author:** cccarey  
 
+# Spring Notes
+
+Instead of using [this](http://jhasaket.blogspot.com/2014/09/securing-spring-mvc-application-using.html) tutorial ([source](https://github.com/skate056/spring-security-oauth2-google)), start with the [Spring tutorial](http://projects.spring.io/spring-security-oauth/docs/tutorial.html).
+
+*The link to Sparklr and Tonr in the Spring tutorial is wrong. They are the sparklr2 and tonr2 in the samples of the [spring-security-oauth source](https://github.com/spring-projects/spring-security-oauth).*
+
 # Service API
 
 ### /info - GET
