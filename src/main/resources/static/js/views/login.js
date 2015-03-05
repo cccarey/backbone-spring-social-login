@@ -22,7 +22,7 @@ define([
         
         render: function() {
             $(this.el).html(template());
-            $("#sign-in", this.el).attr("href", config.apiBase + "login/google-oauth2");
+            $("#sign-in", this.el).attr("href", config.apiBase + "googleLogin");
         }
     });
 });

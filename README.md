@@ -1,8 +1,8 @@
-# backbone-spring-google
+# backbone-spring-social-facebook
 
 Oauth user and login control using Backbone.js and Java Spring
 
-This app provides functions for user management and login using backbone.js & Java Spring using Google OAuth2. It is intended to work as a quickstart for other applications.
+This app provides functions for user management and login using backbone.js & Java Spring Social using Facebook. It is intended to work as a quickstart for other applications.
 
 UI adopted from the [backbone-webpy-openid](https://github.com/cccarey/backbone-webpy-openid) project.
 
@@ -12,9 +12,11 @@ UI adopted from the [backbone-webpy-openid](https://github.com/cccarey/backbone-
 
 # Spring Notes
 
-Instead of using [this](http://jhasaket.blogspot.com/2014/09/securing-spring-mvc-application-using.html) tutorial ([source](https://github.com/skate056/spring-security-oauth2-google)), start with the [Spring tutorial](http://projects.spring.io/spring-security-oauth/docs/tutorial.html).
+Shifting from Google OAuth2 to Facebook using spring-social. See [samples](https://github.com/spring-projects/spring-social-samples).
 
-*The link to Sparklr and Tonr in the Spring tutorial is wrong. They are the sparklr2 and tonr2 in the samples of the [spring-security-oauth source](https://github.com/spring-projects/spring-security-oauth).*
+<p><strike>Instead of using [this](http://jhasaket.blogspot.com/2014/09/securing-spring-mvc-application-using.html) tutorial ([source](https://github.com/skate056/spring-security-oauth2-google)), start with the [Spring tutorial](http://projects.spring.io/spring-security-oauth/docs/tutorial.html).</strike></p>
+
+<p><strike><em>The link to Sparklr and Tonr in the Spring tutorial is wrong. They are the sparklr2 and tonr2 in the samples of the [spring-security-oauth source](https://github.com/spring-projects/spring-security-oauth).</em></strike></p>
 
 # Service API
 
