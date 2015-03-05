@@ -1,4 +1,4 @@
-package com.christiancarey.domain;
+package com.christiancarey.bsfacebook.domain;
 
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
