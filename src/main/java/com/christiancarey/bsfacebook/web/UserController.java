@@ -1,5 +1,7 @@
 package com.christiancarey.bsfacebook.web;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -32,14 +34,21 @@ public class UserController {
 		// TODO: handle errors
 		Connection<?> connection = providerSignInUtils.getConnectionFromSession(request);
 		UserProfile profile = connection.fetchUserProfile();
-		User user = new User(profile.getUsername(), "password", profile.getFirstName(), profile.getLastName());
+		User user = new User(profile.getEmail(), "password", profile.getFirstName(), profile.getLastName());
 		userRepository.save(user);
-		SignInUtils.signin(profile.getUsername());
+		SignInUtils.signin(profile.getEmail());
 		return new RedirectView("/", true);
 	}
 	
+	// TODO: use security principal
 	@RequestMapping(value = "/api/user", method = RequestMethod.GET)
-	ResponseEntity<String> user() {
-		return new ResponseEntity<>("junk", HttpStatus.OK);
+	ResponseEntity<User> user(WebRequest request) throws Exception {
+		String username = providerSignInUtils.getConnectionFromSession(request).fetchUserProfile().getEmail();
+		List<User> users = userRepository.findByUsername(username);
+		if (users.size() > 1) {
+			// TODO: convert to typed exception
+			throw new Exception(String.format("Something has gone terribly wrong. More than one user with the username, '%s'.", username));
+		}
+		return new ResponseEntity<>(users.iterator().next(), HttpStatus.OK);
 	}
 }
