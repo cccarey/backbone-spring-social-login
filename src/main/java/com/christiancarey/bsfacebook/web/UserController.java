@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-public class User {
+public class UserController {
 	@RequestMapping(value = "/user", method = RequestMethod.GET)
 	ResponseEntity<String> user() {
 		return new ResponseEntity<>("junk", HttpStatus.OK);
