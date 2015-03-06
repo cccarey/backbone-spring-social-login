@@ -27,7 +27,6 @@ define([
         
         render: function() {
             $(this.el).html(template());
-            //$("#sign-in", this.el).attr("href", "/signin/facebook");
             $("#facebook", this.el).attr("action", "/signin/facebook");
         },
         
