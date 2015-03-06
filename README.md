@@ -7,12 +7,12 @@ This app provides functions for user management and login using backbone.js & Ja
 UI adopted from the [backbone-webpy-openid](https://github.com/cccarey/backbone-webpy-openid) project.
 
 > **Started:** 2015-03-03  
-> **Last Update:** 2015-03-06 
+> **Last Update:** 2015-03-06  
 > **Author:** cccarey  
 
 # Spring Notes
 
-Shifting from Google OAuth2 to Facebook using spring-social. See [samples](https://github.com/spring-projects/spring-social-samples).
+Shifting from Google OAuth2 to Facebook using spring-social. See [samples](https://github.com/spring-projects/spring-social-samples)
 
 <p><strike>Instead of using [this](http://jhasaket.blogspot.com/2014/09/securing-spring-mvc-application-using.html) tutorial ([source](https://github.com/skate056/spring-security-oauth2-google)), start with the [Spring tutorial](http://projects.spring.io/spring-security-oauth/docs/tutorial.html).</strike></p>
 
