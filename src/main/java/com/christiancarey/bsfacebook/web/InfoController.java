@@ -14,7 +14,7 @@ public class InfoController {
 	@Autowired
 	private Info info;
 	
-	@RequestMapping(method = RequestMethod.GET, value = "/info")
+	@RequestMapping(value = "/api/info", method = RequestMethod.GET)
 	ResponseEntity<Info> info() {
 		return new ResponseEntity<>(info, HttpStatus.OK);
 	}

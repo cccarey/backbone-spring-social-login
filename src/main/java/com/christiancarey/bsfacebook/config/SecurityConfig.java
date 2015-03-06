@@ -19,13 +19,9 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 	@Override
 	public void configure (HttpSecurity http) throws Exception {
 		http
-			.formLogin()
-				.loginPage("/signin")
-				.loginProcessingUrl("/signin/authenticate")
-				.failureUrl("/signin?param.error=bad_credentials")
-			.and().authorizeRequests()
-				.antMatchers("/info/**", "/favicon.ico").permitAll()
-				.antMatchers("/user/**").authenticated()
+			.authorizeRequests()
+				.antMatchers("/api/info/**", "/favicon.ico").permitAll()
+				.antMatchers("/api/**").authenticated()
 			.and().rememberMe();
 	}
 }

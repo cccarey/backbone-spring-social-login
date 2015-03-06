@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 public class UserController {
-	@RequestMapping(value = "/user", method = RequestMethod.GET)
+	@RequestMapping(value = "/api/user", method = RequestMethod.GET)
 	ResponseEntity<String> user() {
 		return new ResponseEntity<>("junk", HttpStatus.OK);
 	}
