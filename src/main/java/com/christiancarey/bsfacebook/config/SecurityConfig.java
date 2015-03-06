@@ -22,6 +22,9 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 			.authorizeRequests()
 				.antMatchers("/api/info/**", "/favicon.ico").permitAll()
 				.antMatchers("/api/**").authenticated()
-			.and().rememberMe();
+			.and()
+			.rememberMe()
+			.and()
+			.csrf().disable();
 	}
 }
