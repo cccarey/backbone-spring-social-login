@@ -13,6 +13,7 @@ define([
         OpenIdRouter: Backbone.Router.extend({
             routes: {
                 '' : 'showUser',
+                '_=_': 'stupidFacebook',
                 'logout' : 'processLogout',
                 'login' : 'showLogin',
                 'edit' : 'showUserEdit'
@@ -35,6 +36,10 @@ define([
 
             /* --- router functions --- */
 
+            stupidFacebook: function() {
+            	window.location = "./";
+            },
+            
             processLogout: function() {
                 this.user.clear();
                 $.ajax({

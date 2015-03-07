@@ -13,19 +13,20 @@ public class User {
     private Long id;
 
     private String username;
+	private String firstName;
+	private String lastName;
+	private String email;
     
     @JsonIgnore
 	private String password;
     
-	private String firstName;
-	
-	private String lastName;
 
-	public User(String username, String password, String firstName, String lastName) {
+	public User(String username, String password, String firstName, String lastName, String email) {
 		this.username = username;
 		this.password = password;
 		this.firstName = firstName;
 		this.lastName = lastName;
+		this.email = email;
 	}
 	
 	User() {
@@ -46,5 +47,9 @@ public class User {
 
 	public String getLastName() {
 		return lastName;
+	}
+
+	public String getEmail() {
+		return email;
 	}
 }

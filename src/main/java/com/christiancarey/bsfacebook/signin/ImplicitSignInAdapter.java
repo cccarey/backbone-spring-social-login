@@ -12,18 +12,19 @@ import org.springframework.social.connect.Connection;
 import org.springframework.social.connect.web.SignInAdapter;
 import org.springframework.web.context.request.NativeWebRequest;
 
-public class SimpleSignInAdapter implements SignInAdapter {
+public class ImplicitSignInAdapter implements SignInAdapter {
 
 	private final RequestCache requestCache;
 
 	@Inject
-	public SimpleSignInAdapter(RequestCache requestCache) {
+	public ImplicitSignInAdapter(RequestCache requestCache) {
 		this.requestCache = requestCache;
 	}
 	
 	@Override
 	public String signIn(String localUserId, Connection<?> connection, NativeWebRequest request) {
-		SignInUtils.signin(localUserId);
+		String providerUserId = connection.getKey().getProviderUserId();
+		SignInUtils.signin(providerUserId);
 		return extractOriginalUrl(request);
 	}
 
