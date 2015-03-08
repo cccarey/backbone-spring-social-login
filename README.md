@@ -10,13 +10,14 @@ UI adopted from the [backbone-webpy-openid](https://github.com/cccarey/backbone-
 > **Last Update:** 2015-03-06  
 > **Author:** cccarey  
 
-# Spring Notes
+# Notes
 
-Shifting from Google OAuth2 to Facebook using spring-social. See [samples](https://github.com/spring-projects/spring-social-samples)
+## application-secret.properties
 
-<p><strike>Instead of using [this](http://jhasaket.blogspot.com/2014/09/securing-spring-mvc-application-using.html) tutorial ([source](https://github.com/skate056/spring-security-oauth2-google)), start with the [Spring tutorial](http://projects.spring.io/spring-security-oauth/docs/tutorial.html).</strike></p>
+This file is kept out of git as it contains the appId and secret key for facebook. You need to create this file with the following settings:
 
-<p><strike><em>The link to Sparklr and Tonr in the Spring tutorial is wrong. They are the sparklr2 and tonr2 in the samples of the [spring-security-oauth source](https://github.com/spring-projects/spring-security-oauth).</em></strike></p>
+	spring.social.facebook.appId={YOUR_APP_ID}
+	spring.social.facebook.appSecret={YOUR_SECRET}
 
 # Service API
 
