@@ -16,6 +16,7 @@ public class User {
 	private String firstName;
 	private String lastName;
 	private String email;
+	private String nickName;
     
     @JsonIgnore
 	private String password;
@@ -51,5 +52,13 @@ public class User {
 
 	public String getEmail() {
 		return email;
+	}
+	
+	public String getNickName() {
+		return nickName;
+	}
+	
+	public void setNickName(String nickName) {
+		this.nickName = nickName;
 	}
 }
