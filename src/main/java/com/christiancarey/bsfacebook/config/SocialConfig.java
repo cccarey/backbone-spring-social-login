@@ -35,9 +35,9 @@ public class SocialConfig extends SocialConfigurerAdapter {
 	@Autowired
 	private Environment environment;
 	
-	@Override
-	public UsersConnectionRepository getUsersConnectionRepository(ConnectionFactoryLocator connectionFactoryLocator) {
-		JdbcUsersConnectionRepository repository = new JdbcUsersConnectionRepository(dataSource, connectionFactoryLocator, Encryptors.noOpText());
+	@Bean
+	public UsersConnectionRepository usersConnectionRepository() {
+		JdbcUsersConnectionRepository repository = new JdbcUsersConnectionRepository(dataSource, connectionFactoryLocator(), Encryptors.noOpText());
 		repository.setConnectionSignUp(new AccountConnectionSignup(this.userRepository));
 		return repository;
 	}
