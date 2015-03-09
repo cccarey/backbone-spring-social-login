@@ -37,16 +37,12 @@ define([
             /* --- router functions --- */
 
             stupidFacebook: function() {
-            	window.location = "./";
+            	this.navigate("", {trigger: true, replace: true});
             },
             
             processLogout: function() {
                 this.user.clear();
-                $.ajax({
-                    url: config.apiBase + "logout",
-                    type: "GET",
-                    success: function() { window.location = "./#/login"; }
-                });
+                $.ajax({ url: "signout", type: "GET" });
             },
 
             showUser: function() {
