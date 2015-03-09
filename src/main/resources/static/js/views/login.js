@@ -16,22 +16,30 @@ define([
         id: "login_view",
         
         events: {
-        	"click #sign-in": "submitSignin"
+        	"click #facebook-sign-in": "submitFacebookSignin",
+        	"click #google-sign-in": "submitGoogleSignin"
         },
         
         initialize: function(args) {
-        	_.bindAll(this, "submitSignin");
+        	_.bindAll(this, "submitFacebookSignin", "submitGoogleSignin");
             args.pageInfo.set("pageTitle", "Login");
             args.pageInfo.unset("menuItems");
         },
         
         render: function() {
             $(this.el).html(template());
-            $("#facebook", this.el).attr("action", "/signin/facebook");
         },
         
-        submitSignin: function() {
-        	$("#facebook", this.el).submit();
+        submitFacebookSignin: function() {
+        	$("#sign-in", this.el).attr("action", "/signin/facebook");
+        	$("#sign-in #scope", this.el).attr("value", "public_profile,email");
+        	$("#sign-in", this.el).submit();
+        },
+
+        submitGoogleSignin: function() {
+        	$("#sign-in", this.el).attr("action", "/signin/google");
+        	$("#sign-in #scope", this.el).attr("value", "openid profile email");
+        	$("#sign-in", this.el).submit();
         }
     });
 });
