@@ -54,7 +54,7 @@ define([
         footer: footer,
         loginPage: loginPage, 
         userPage: userPage, 
-        userEditPage: userEditPage 
+        userEditPage: userEditPage
     };
 
 });

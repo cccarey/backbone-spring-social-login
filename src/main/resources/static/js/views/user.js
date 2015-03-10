@@ -5,14 +5,18 @@ define([
     'lib/handlebars',
     'config',
     'models/loader',
-    'text!../../templates/user.html',
-], function($, _, Backbone, Handlebars, config, models, userDetailsTemplate) {
+    'views/modals/loader',
+    'text!../../templates/user.html'
+], function($, _, Backbone, Handlebars, config, models, modals, userDetailsTemplate) {
     'use strict';
-
-    var template = Handlebars.compile(userDetailsTemplate);
 
     return Backbone.View.extend({
         id: "user_view",
+        template: Handlebars.compile(userDetailsTemplate),
+        connectionsTemplate: Handlebars.compile('\
+        		<p>Returned by server</p>\
+        		<pre>{{data}}</pre>\
+        		'),
 
         events: {
             "click #back": "handleBackClick",
@@ -26,7 +30,7 @@ define([
         },
 
         render: function() {
-            $(this.el).html(template(this.model.toJSON()));
+            $(this.el).html(this.template(this.model.toJSON()));
         },
 
         handleBackClick: function(event) {
@@ -34,8 +38,18 @@ define([
         },
 
         showConnections: function() {
+        	var self = this;
             var providers = new models.provider;
-            providers.fetch({ success: function() { console.log(providers); }});
+            providers.fetch({ 
+            	success: function() { 
+	                	var modal = new modals.MessageModalView({ 
+	                		title: "Raw Data", 
+	                		message: self.connectionsTemplate({ data: JSON.stringify(providers.toJSON()) }) 
+	                		});
+	                	modal.show();
+	                	console.log(providers.toJSON());
+            		}
+            });
         }
     });
 });
