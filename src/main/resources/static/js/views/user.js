@@ -27,11 +27,14 @@ define([
         },
 
         initialize: function(args) {
-            //_.bindAll(this, "submitFacebookSignin", "submitGoogleSignin");
+        	_.bindAll(this, "enableShowConnections");
             args.pageInfo.set("pageTitle", "User");
             args.pageInfo.unset("menuItems");
-            this.listenTo(this.model, "change", this.render);
             this.router = args.router;
+            this.providers = new models.provider;
+            this.listenTo(this.model, "change", this.render);
+            this.listenTo(this.providers, "change", this.enableShowConnections);
+            this.providers.fetch();
         },
 
         render: function() {
@@ -39,6 +42,7 @@ define([
         },
 
         handleBackClick: function(event) {
+        	if (event && event.preventDefault) { event.preventDefault(); }
             this.goBack();
         },
 
@@ -47,18 +51,17 @@ define([
         	this.router.navigate("edit", { trigger: true });
         },
         
-        showConnections: function() {
-        	var self = this;
-            var providers = new models.provider;
-            providers.fetch({ 
-            	success: function() { 
-	                	var modal = new modals.MessageModalView({ 
-	                		title: "Raw Data", 
-	                		message: self.connectionsTemplate({ data: JSON.stringify(providers.toJSON(), null, 2) }) 
-	                		});
-	                	modal.show();
-            		}
-            });
+        enableShowConnections: function() {
+        	$("#show-connections", this.el).removeClass("disabled");
+        },
+        
+        showConnections: function(event) {
+        	if (event && event.preventDefault) { event.preventDefault(); }
+        	var modal = new modals.MessageModalView({ 
+        		title: "Raw Data", 
+        		message: this.connectionsTemplate({ data: JSON.stringify(this.providers.toJSON(), null, 2) }) 
+        		});
+        	modal.show();
         },
 
         submitFacebookSignin: function() {
