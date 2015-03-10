@@ -47,7 +47,6 @@ define([
 	                		message: self.connectionsTemplate({ data: JSON.stringify(providers.toJSON()) }) 
 	                		});
 	                	modal.show();
-	                	console.log(providers.toJSON());
             		}
             });
         }
