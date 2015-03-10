@@ -19,6 +19,7 @@ define([
         		'),
 
         events: {
+        	"click #edit": "handleEditClick",
             "click #back": "handleBackClick",
             "click #show-connections": "showConnections",
             "click #facebook-sign-in": "submitFacebookSignin",
@@ -26,10 +27,11 @@ define([
         },
 
         initialize: function(args) {
-            _.bindAll(this, "submitFacebookSignin", "submitGoogleSignin");
+            //_.bindAll(this, "submitFacebookSignin", "submitGoogleSignin");
             args.pageInfo.set("pageTitle", "User");
             args.pageInfo.unset("menuItems");
             this.listenTo(this.model, "change", this.render);
+            this.router = args.router;
         },
 
         render: function() {
@@ -40,6 +42,11 @@ define([
             this.goBack();
         },
 
+        handleEditClick: function(event) {
+        	if (event && event.preventDefault) { event.preventDefault(); }
+        	this.router.navigate("edit", { trigger: true });
+        },
+        
         showConnections: function() {
         	var self = this;
             var providers = new models.provider;

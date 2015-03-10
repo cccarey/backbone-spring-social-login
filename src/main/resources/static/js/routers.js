@@ -54,7 +54,7 @@ define([
             },
 
             showUser: function() {
-                this.mainLayout.show(new views.userPage({ model: this.user, pageInfo: this.pageInfo }));
+                this.mainLayout.show(new views.userPage({ model: this.user, pageInfo: this.pageInfo, router: this }));
             },
 
             showUserEdit: function() {
