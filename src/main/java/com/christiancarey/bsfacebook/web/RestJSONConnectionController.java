@@ -20,14 +20,14 @@ import com.christiancarey.bsfacebook.domain.Connections;
 
 @RestController
 @RequestMapping(value = "/api/connect")
-public class ConnectionsController {
+public class RestJSONConnectionController {
     private ConnectionRepository connectionRepository;
     private ConnectionFactoryLocator connectionFactoryLocator;
     
     @Inject
-    public ConnectionsController(ConnectionRepository connectionRepository, ConnectionFactoryLocator connectionFactoryLocator) {
-        this.connectionRepository = connectionRepository;
+    public RestJSONConnectionController(ConnectionFactoryLocator connectionFactoryLocator, ConnectionRepository connectionRepository) {
         this.connectionFactoryLocator = connectionFactoryLocator;
+        this.connectionRepository = connectionRepository;
     }
     
     @RequestMapping(method = RequestMethod.GET)
