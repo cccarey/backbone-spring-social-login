@@ -11,11 +11,11 @@ import com.christiancarey.bsfacebook.domain.Info;
 
 @RestController
 public class InfoController {
-	@Autowired
-	private Info info;
-	
-	@RequestMapping(value = "/api/info", method = RequestMethod.GET)
-	ResponseEntity<Info> info() {
-		return new ResponseEntity<>(info, HttpStatus.OK);
-	}
+    @Autowired
+    private Info info;
+    
+    @RequestMapping(value = "/api/info", method = RequestMethod.GET)
+    ResponseEntity<Info> info() {
+        return new ResponseEntity<>(info, HttpStatus.OK);
+    }
 }

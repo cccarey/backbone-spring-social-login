@@ -26,38 +26,38 @@ import com.christiancarey.bsfacebook.signin.ImplicitSignInAdapter;
 @EnableSocial
 public class SocialConfig extends SocialConfigurerAdapter {
 
-	@Autowired
-	private DataSource dataSource;
-	
-	@Autowired
-	private UserJpaRepository userRepository;
-	
-	@Autowired
-	private Environment environment;
-	
-	@Bean
-	public UsersConnectionRepository usersConnectionRepository() {
-		JdbcUsersConnectionRepository repository = new JdbcUsersConnectionRepository(dataSource, connectionFactoryLocator(), Encryptors.noOpText());
-		repository.setConnectionSignUp(new AccountConnectionSignup(this.userRepository));
-		return repository;
-	}
+    @Autowired
+    private DataSource dataSource;
+    
+    @Autowired
+    private UserJpaRepository userRepository;
+    
+    @Autowired
+    private Environment environment;
+    
+    @Bean
+    public UsersConnectionRepository usersConnectionRepository() {
+        JdbcUsersConnectionRepository repository = new JdbcUsersConnectionRepository(dataSource, connectionFactoryLocator(), Encryptors.noOpText());
+        repository.setConnectionSignUp(new AccountConnectionSignup(this.userRepository));
+        return repository;
+    }
 
-	@Bean
-	public SignInAdapter signInAdapter() {
-		return new ImplicitSignInAdapter(new HttpSessionRequestCache());
-	}
+    @Bean
+    public SignInAdapter signInAdapter() {
+        return new ImplicitSignInAdapter(new HttpSessionRequestCache());
+    }
 
-	@Bean
-	public ConnectionFactoryLocator connectionFactoryLocator() {
-		ConnectionFactoryRegistry registry = new ConnectionFactoryRegistry();
-		registry.addConnectionFactory(new FacebookConnectionFactory(
-				environment.getProperty("spring.social.facebook.appId"), 
-				environment.getProperty("spring.social.facebook.appSecret")
-				));
-		registry.addConnectionFactory(new GoogleConnectionFactory(
-				environment.getProperty("spring.social.google.clientId"),
-				environment.getProperty("spring.social.google.clientSecret")
-				));
-		return registry;
-	}
+    @Bean
+    public ConnectionFactoryLocator connectionFactoryLocator() {
+        ConnectionFactoryRegistry registry = new ConnectionFactoryRegistry();
+        registry.addConnectionFactory(new FacebookConnectionFactory(
+                environment.getProperty("spring.social.facebook.appId"), 
+                environment.getProperty("spring.social.facebook.appSecret")
+                ));
+        registry.addConnectionFactory(new GoogleConnectionFactory(
+                environment.getProperty("spring.social.google.clientId"),
+                environment.getProperty("spring.social.google.clientSecret")
+                ));
+        return registry;
+    }
 }

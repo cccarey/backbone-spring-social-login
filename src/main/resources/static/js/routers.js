@@ -37,7 +37,7 @@ define([
             /* --- router functions --- */
 
             stupidFacebook: function() {
-            	this.navigate("", {trigger: true, replace: true});
+                this.navigate("", {trigger: true, replace: true});
             },
             
             processLogout: function() {

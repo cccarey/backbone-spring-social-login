@@ -13,8 +13,8 @@ import com.christiancarey.bsfacebook.BSGApplication;
 @WebAppConfiguration
 public class BSOpenidApplicationTests {
 
-	@Test
-	public void contextLoads() {
-	}
+    @Test
+    public void contextLoads() {
+    }
 
 }

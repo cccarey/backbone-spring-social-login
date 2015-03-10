@@ -21,28 +21,28 @@ import com.christiancarey.bsfacebook.domain.Connections;
 @RestController
 @RequestMapping(value = "/api/connect")
 public class ConnectionsController {
-	private ConnectionRepository connectionRepository;
-	private ConnectionFactoryLocator connectionFactoryLocator;
-	
-	@Inject
-	public ConnectionsController(ConnectionRepository connectionRepository, ConnectionFactoryLocator connectionFactoryLocator) {
-		this.connectionRepository = connectionRepository;
-		this.connectionFactoryLocator = connectionFactoryLocator;
-	}
-	
-	@RequestMapping(method = RequestMethod.GET)
-	public ResponseEntity<?> connectionStatus() {
-		Map<String, List<Connection<?>>> connections = connectionRepository.findAllConnections();
-		List<Connections> retConnections = new ArrayList<Connections>();
-		connectionFactoryLocator.registeredProviderIds().forEach((provider) -> {
-			retConnections.add(new Connections(provider, connections.get(provider)));
-		});
-		return new ResponseEntity<>(retConnections, HttpStatus.OK);
-	}
-	
-	@RequestMapping(value="/{providerId}", method=RequestMethod.GET)
-	public ResponseEntity<?> connectionStatus(@PathVariable String providerId) {
-		return new ResponseEntity<>(connectionRepository.findConnections(providerId), HttpStatus.OK);
-	}
-	
+    private ConnectionRepository connectionRepository;
+    private ConnectionFactoryLocator connectionFactoryLocator;
+    
+    @Inject
+    public ConnectionsController(ConnectionRepository connectionRepository, ConnectionFactoryLocator connectionFactoryLocator) {
+        this.connectionRepository = connectionRepository;
+        this.connectionFactoryLocator = connectionFactoryLocator;
+    }
+    
+    @RequestMapping(method = RequestMethod.GET)
+    public ResponseEntity<?> connectionStatus() {
+        Map<String, List<Connection<?>>> connections = connectionRepository.findAllConnections();
+        List<Connections> retConnections = new ArrayList<Connections>();
+        connectionFactoryLocator.registeredProviderIds().forEach((provider) -> {
+            retConnections.add(new Connections(provider, connections.get(provider)));
+        });
+        return new ResponseEntity<>(retConnections, HttpStatus.OK);
+    }
+    
+    @RequestMapping(value="/{providerId}", method=RequestMethod.GET)
+    public ResponseEntity<?> connectionStatus(@PathVariable String providerId) {
+        return new ResponseEntity<>(connectionRepository.findConnections(providerId), HttpStatus.OK);
+    }
+    
 }

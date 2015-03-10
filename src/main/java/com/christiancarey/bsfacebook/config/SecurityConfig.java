@@ -19,49 +19,49 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 @Configuration
 @EnableWebSecurity
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
-	@Inject
-	private DataSource dataSource;
-	
-	@Autowired
-	public void registerAuthentication(AuthenticationManagerBuilder auth) throws Exception {
-		auth.jdbcAuthentication()
-				.dataSource(dataSource)
-				.usersByUsernameQuery("select username, password, true from Account where username = ?")
-				.authoritiesByUsernameQuery("select username, 'ROLE_USER' from Account where username = ?")
-				.passwordEncoder(passwordEncoder());
-	}
-	
-	@Override
-	public void configure(WebSecurity web) throws Exception {
-		web
-			.ignoring()
-				.antMatchers("/**/*.css", "/**/*.png", "/**/*.gif", "/**/*.jpg", "/**/*.js", "/**/*.html");
-	}
-	
-	@Override
-	public void configure (HttpSecurity http) throws Exception {
-		http
-			.authorizeRequests()
-				.antMatchers("/api/info/**", "/favicon.ico").permitAll()
-				.antMatchers("/api/**").authenticated()
-			.and()
-			.rememberMe()
-			.and()
-			.logout()
-				.logoutUrl("/signout")
-				.logoutSuccessUrl("/#/login")
-				.deleteCookies("JSESSIONID")
-			.and()
-			.csrf().disable();
-	}
+    @Inject
+    private DataSource dataSource;
+    
+    @Autowired
+    public void registerAuthentication(AuthenticationManagerBuilder auth) throws Exception {
+        auth.jdbcAuthentication()
+                .dataSource(dataSource)
+                .usersByUsernameQuery("select username, password, true from Account where username = ?")
+                .authoritiesByUsernameQuery("select username, 'ROLE_USER' from Account where username = ?")
+                .passwordEncoder(passwordEncoder());
+    }
+    
+    @Override
+    public void configure(WebSecurity web) throws Exception {
+        web
+            .ignoring()
+                .antMatchers("/**/*.css", "/**/*.png", "/**/*.gif", "/**/*.jpg", "/**/*.js", "/**/*.html");
+    }
+    
+    @Override
+    public void configure (HttpSecurity http) throws Exception {
+        http
+            .authorizeRequests()
+                .antMatchers("/api/info/**", "/favicon.ico").permitAll()
+                .antMatchers("/api/**").authenticated()
+            .and()
+            .rememberMe()
+            .and()
+            .logout()
+                .logoutUrl("/signout")
+                .logoutSuccessUrl("/#/login")
+                .deleteCookies("JSESSIONID")
+            .and()
+            .csrf().disable();
+    }
 
-	@Bean
-	public PasswordEncoder passwordEncoder() {
-		return NoOpPasswordEncoder.getInstance();
-	}
+    @Bean
+    public PasswordEncoder passwordEncoder() {
+        return NoOpPasswordEncoder.getInstance();
+    }
 
-	@Bean
-	public TextEncryptor textEncryptor() {
-		return Encryptors.noOpText();
-	}
+    @Bean
+    public TextEncryptor textEncryptor() {
+        return Encryptors.noOpText();
+    }
 }

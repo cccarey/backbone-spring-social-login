@@ -16,12 +16,12 @@ UI adopted from the [backbone-webpy-openid](https://github.com/cccarey/backbone-
 
 This file is kept out of git as it contains the appId and secret key for Facebook and Google. You need to create this file with the following settings:
 
-	spring.social.facebook.appId={YOUR_APP_ID}
-	spring.social.facebook.appSecret={YOUR_SECRET}
-	
-	spring.social.google.clientId={YOUR_CLIENT_ID}
-	spring.social.google.clientSecret={YOUR_SECRET}
-	
+    spring.social.facebook.appId={YOUR_APP_ID}
+    spring.social.facebook.appSecret={YOUR_SECRET}
+    
+    spring.social.google.clientId={YOUR_CLIENT_ID}
+    spring.social.google.clientSecret={YOUR_SECRET}
+    
 # Service API
 
 ### /info - GET

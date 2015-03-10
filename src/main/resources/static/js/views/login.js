@@ -16,12 +16,12 @@ define([
         id: "login_view",
         
         events: {
-        	"click #facebook-sign-in": "submitFacebookSignin",
-        	"click #google-sign-in": "submitGoogleSignin"
+            "click #facebook-sign-in": "submitFacebookSignin",
+            "click #google-sign-in": "submitGoogleSignin"
         },
         
         initialize: function(args) {
-        	_.bindAll(this, "submitFacebookSignin", "submitGoogleSignin");
+            _.bindAll(this, "submitFacebookSignin", "submitGoogleSignin");
             args.pageInfo.set("pageTitle", "Login");
             args.pageInfo.unset("menuItems");
         },
@@ -31,15 +31,15 @@ define([
         },
         
         submitFacebookSignin: function() {
-        	$("#sign-in", this.el).attr("action", "/signin/facebook");
-        	$("#sign-in #scope", this.el).attr("value", "public_profile,email");
-        	$("#sign-in", this.el).submit();
+            $("#sign-in", this.el).attr("action", "/signin/facebook");
+            $("#sign-in #scope", this.el).attr("value", "public_profile,email");
+            $("#sign-in", this.el).submit();
         },
 
         submitGoogleSignin: function() {
-        	$("#sign-in", this.el).attr("action", "/signin/google");
-        	$("#sign-in #scope", this.el).attr("value", "openid profile email");
-        	$("#sign-in", this.el).submit();
+            $("#sign-in", this.el).attr("action", "/signin/google");
+            $("#sign-in #scope", this.el).attr("value", "openid profile email");
+            $("#sign-in", this.el).submit();
         }
     });
 });

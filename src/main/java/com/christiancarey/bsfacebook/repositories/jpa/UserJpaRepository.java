@@ -9,5 +9,5 @@ import com.christiancarey.bsfacebook.domain.User;
 
 @Repository
 public interface UserJpaRepository extends JpaRepository<User, Long> {
-	Optional<User> findByUsername(String username);
+    Optional<User> findByUsername(String username);
 }

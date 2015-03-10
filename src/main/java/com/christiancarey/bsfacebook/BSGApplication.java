@@ -8,12 +8,12 @@ import org.springframework.context.support.PropertySourcesPlaceholderConfigurer;
 @SpringBootApplication
 public class BSGApplication {
 
-	@Bean
-	public static PropertySourcesPlaceholderConfigurer propertyConfigIn() {
-		return new PropertySourcesPlaceholderConfigurer();
-	}
+    @Bean
+    public static PropertySourcesPlaceholderConfigurer propertyConfigIn() {
+        return new PropertySourcesPlaceholderConfigurer();
+    }
 
-	public static void main(String[] args) {
+    public static void main(String[] args) {
         SpringApplication.run(BSGApplication.class, args);
     }
 }
