@@ -15,7 +15,8 @@ define([
         id: "user_view",
 
         events: {
-            "click #back": "handleBackClick"
+            "click #back": "handleBackClick",
+            "click #show-connections": "showConnections"
         },
 
         initialize: function(args) {
@@ -30,6 +31,11 @@ define([
 
         handleBackClick: function(event) {
             this.goBack();
+        },
+
+        showConnections: function() {
+            var providers = new models.provider;
+            providers.fetch({ success: function() { console.log(providers); }});
         }
     });
 });
