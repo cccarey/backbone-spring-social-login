@@ -20,6 +20,7 @@ define([
             },
 
             initialize: function() {
+                _.bindAll(this, "onNoAuth");
                 this.info = new models.info({});
                 this.user = new models.user({ onNoAuth: this.onNoAuth });
                 this.pageInfo = new models.pageInfo({ app: "Backbone/Spring Social/Facebook" });
@@ -31,7 +32,7 @@ define([
 
             onNoAuth: function() {
                 if (this && this.user){ this.user.clear(); }
-                window.location = "./#/login";
+                this.navigate("login", { trigger: true });
             },
 
             /* --- router functions --- */
@@ -41,8 +42,15 @@ define([
             },
             
             processLogout: function() {
-                this.user.clear();
-                $.ajax({ url: "signout", type: "GET" });
+            	var self = this;
+                $.ajax({ 
+                	url: "signout", 
+                	type: "GET", 
+                	success: function() { 
+                		self.user = new models.user({ onNoAuth: self.onNoAuth });
+                		self.navigate("", {trigger: true, replace: true});
+            		}
+                });
             },
 
             showUser: function() {
