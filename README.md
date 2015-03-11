@@ -22,6 +22,14 @@ This file is kept out of git as it contains the appId and secret key for Faceboo
     spring.social.google.clientId={YOUR_CLIENT_ID}
     spring.social.google.clientSecret={YOUR_SECRET}
     
+## Theme notes
+
+This project uses [Bootstrap](https://getbootstrap.com).
+
+The theme comes from [Bootswatch](https://bootswatch.com).
+
+The social sign-in buttons come from [bootstrap-social on GitHub](https://github.com/lipis/bootstrap-social).
+    
 # Service API
 
 ### /info - GET
@@ -58,8 +66,3 @@ Logs the user out of the application
 
 > See [Python Social Auth documentation](http://psa.matiasaguirre.net/) for additional
 > API calls.
-
-# Other References
-
-The sign-in buttons come from
-[this project on GitHub](https://github.com/necolas/css3-social-signin-buttons).
