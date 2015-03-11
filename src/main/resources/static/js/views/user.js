@@ -5,9 +5,9 @@ define([
     'lib/handlebars',
     'config',
     'models/loader',
-    'views/modals/loader',
+    'views/user_connections',
     'text!../../templates/user.html'
-], function($, _, Backbone, Handlebars, config, models, modals, userDetailsTemplate) {
+], function($, _, Backbone, Handlebars, config, models, connectionsView, userDetailsTemplate) {
     'use strict';
 
     return Backbone.View.extend({
@@ -27,14 +27,15 @@ define([
         },
 
         initialize: function(args) {
-        	_.bindAll(this, "enableShowConnections");
+        	_.bindAll(this, "addProvider", "addProviders", "onClose", "closeAndRemoveItemViews");
             args.pageInfo.set("pageTitle", "User");
             args.pageInfo.unset("menuItems");
             this.router = args.router;
-            this.providers = new models.provider;
+            this.providers = new models.providers();
+            this.connectionsViews = [];
             this.listenTo(this.model, "change", this.render);
-            this.listenTo(this.providers, "change", this.enableShowConnections);
-            this.providers.fetch();
+            this.listenTo(this.providers, "reset", this.addProviders);
+            this.providers.fetch({ reset: true });
         },
 
         render: function() {
@@ -51,19 +52,16 @@ define([
         	this.router.navigate("edit", { trigger: true });
         },
         
-        enableShowConnections: function() {
-        	$("#show-connections", this.el).removeClass("disabled");
+        addProvider: function(item) {
+            var view = new connectionsView({ model: item });
+            this.connectionsViews.push(view);
+            $("#connections", this.el).append(view.el);
         },
         
-        showConnections: function(event) {
-        	if (event && event.preventDefault) { event.preventDefault(); }
-        	var modal = new modals.MessageModalView({ 
-        		title: "Raw Data", 
-        		message: this.connectionsTemplate({ data: JSON.stringify(this.providers.toJSON(), null, 2) }) 
-        		});
-        	modal.show();
+        onClose: function() {
+            this.closeAndRemoveItemViews();
         },
-
+        
         submitFacebookSignin: function() {
             $("#sign-in", this.el).attr("action", "/connect/facebook");
             $("#sign-in #scope", this.el).attr("value", "public_profile,email");
@@ -74,6 +72,22 @@ define([
             $("#sign-in", this.el).attr("action", "/connect/google");
             $("#sign-in #scope", this.el).attr("value", "openid profile email");
             $("#sign-in", this.el).submit();
+        },
+
+        // TODO: refactor to a prototype function in loader
+        addProviders: function(list) {
+            this.closeAndRemoveItemViews();
+            var addView = this.addProvider;
+            _.each(list.models, function(value) {
+            	addView(value);
+            });
+        },
+
+        closeAndRemoveItemViews: function() {
+            _.each(this.connectionsViews, function(view) {
+                view.close();
+            });
+            this.connectionsViews = [];
         }
     });
 });

@@ -5,8 +5,8 @@ define([
     'config', 
     'models/connection'
 ], function($, _, Backbone, config, connection) {
-    return Backbone.Model.extend({
-        url: function() { return config.apiBase + "connect" },
+    var provider = Backbone.Model.extend({
+        url: function() { return config.apiBase + "connect" + this.id },
 
         set: function(attributes, options) {
             if (attributes.connections !== undefined && !(attributes.connections instanceof connection[1])) {
@@ -15,4 +15,11 @@ define([
             return Backbone.Model.prototype.set.call(this, attributes, options);
         }
     });
+    
+    var providers = Backbone.Collection.extend({
+    	model: provider,
+    	url: function() { return config.apiBase + "connect" }    	
+    })
+    
+    return [ provider, providers ];
 });

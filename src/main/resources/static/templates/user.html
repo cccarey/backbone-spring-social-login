@@ -7,23 +7,23 @@
                 <legend>User</legend>
                 <div class="form-group">
                     <label class="col-lg-2 control-label" for="username">User Name</label>
-                    <div class="col-lg-10" id="username">{{username}}</div>
+                    <div class="col-lg-10 form-control-static" id="username">{{username}}</div>
                 </div>
                 <div class="form-group">
                     <label class="col-lg-2 control-label" for="first_name">EMail</label>
-                    <div class="col-lg-10" id="first_name">{{email}}</div>
+                    <div class="col-lg-10 form-control-static" id="first_name">{{email}}</div>
                 </div>
                 <div class="form-group">
                     <label class="col-lg-2 control-label" for="first_name">First Name</label>
-                    <div class="col-lg-10" id="first_name">{{firstName}}</div>
+                    <div class="col-lg-10 form-control-static" id="first_name">{{firstName}}</div>
                 </div>
                 <div class="form-group">
                     <label class="col-lg-2 control-label" for="last_name">Last Name</label>
-                    <div class="col-lg-10" id="last_name">{{lastName}}</div>
+                    <div class="col-lg-10 form-control-static" id="last_name">{{lastName}}</div>
                 </div>
                 <div class="form-group">
                     <label class="col-lg-2 control-label" for="nick_name">Nick Name</label>
-                    <div class="col-lg-10" id="nick_name">{{nickName}}&nbsp;</div>
+                    <div class="col-lg-10 form-control-static" id="nick_name">{{nickName}}&nbsp;</div>
                 </div>
                 <div class="form-group">
                     <div class="col-lg-6">
@@ -31,22 +31,9 @@
 		                <button id="back" class="btn btn-default">back</button>
 	                </div>
                 </div>
-                <div class="form-group col-lg-4">
-                <p>
-                    <button id="show-connections" class="btn btn-default disabled">show connections</button>
-                </p>
-                <p>
-                    <a class="btn btn-block btn-social btn-facebook"
-                        id="facebook-sign-in"><i class="fa fa-facebook"></i>Connect
-                        account to <b>Facebook</b></a>
-                </p>
-                <p>
-                    <a class="btn btn-block btn-social btn-google-plus"
-                        id="google-sign-in"><i class="fa fa-google-plus"></i>Connect
-                        account to <b>Google+</b></a>
-                </p>
-                </div>
             </fieldset>
         </form>
+    </div>
+    <div id="connections" class="bs-component">
     </div>
 </div>

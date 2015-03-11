@@ -17,7 +17,8 @@ define([
         pageInfo: pageInfo,
         connection: connection[0],
         connections: connection[1],
-        provider: provider
+        provider: provider[0],
+        providers: provider[1]
     };
 
 });
