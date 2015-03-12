@@ -44,7 +44,6 @@ define([
         },
         
         render: function() {
-            console.log(this.model.toJSON());
             $(this.el).html(this.template({ 
                 model: this.model.toJSON(),
                 providerClass: this.providerClass,
