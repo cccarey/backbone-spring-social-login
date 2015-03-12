@@ -9,11 +9,10 @@ define([
 ], function($, _, Backbone, Handlebars, config, models, editUserTemplate) {
     'use strict';
     
-    var template = Handlebars.compile(editUserTemplate);
-    
     return Backbone.View.extend({
         id: "edit_user_view",
-        
+        template: Handlebars.compile(editUserTemplate),
+
         events: {
             "click #cancel" : "handleCancelClick",
             "submit form#edit" : "handleFormSubmit"
@@ -26,7 +25,7 @@ define([
         },
         
         render: function() {
-            $(this.el).html(template(this.model.toJSON()));
+            $(this.el).html(this.template(this.model.toJSON()));
             $("#nick_name", this.el).select().focus();
         }
     });

@@ -8,10 +8,9 @@ define([
 ], function($, _, Backbone, Handlebars, config, headerTemplate) {
     'use strict';
 
-    var template = Handlebars.compile(headerTemplate);
-
     return Backbone.View.extend({
         el: "#header",
+        template: Handlebars.compile(headerTemplate),
 
         initialize: function(args) {
             this.info = args.info;
@@ -30,7 +29,7 @@ define([
                 this.pageInfo.get("app");
             document.title = title;
             var theEl = this.el;
-            $(theEl).html(template({ info: this.info, user: this.user, title: title }));
+            $(theEl).html(this.template({ info: this.info, user: this.user, title: title }));
             if (this.pageInfo.has("menuItems")) {
                 $.each(this.pageInfo.get("menuItems"), function(index, value) {
                     $("#top-nav", theEl).append(' | <a href="' + value["href"] + '">' + value["text"] + '</a>');

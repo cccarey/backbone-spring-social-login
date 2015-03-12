@@ -10,10 +10,9 @@ define([
 ], function($, _, Backbone, Handlebars, config, header, footer, mainLayoutTemplate) {
     'use strict';
     
-    var template = Handlebars.compile(mainLayoutTemplate);
-    
     return Backbone.View.extend({
         el: "body",
+        template: Handlebars.compile(mainLayoutTemplate),
 
         initialize: function(args) {
             _.bindAll(this, "show");
@@ -28,7 +27,7 @@ define([
         },
         
         render: function() {
-            $(this.el).html(template());
+            $(this.el).html(this.template());
         },
         
         show: function(view) {

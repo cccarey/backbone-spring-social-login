@@ -10,10 +10,9 @@ define([
 ], function($, _, Backbone, Handlebars, config, models, header, loginTemplate) {
     'use strict';
     
-    var template = Handlebars.compile(loginTemplate);
-    
     return Backbone.View.extend({
         id: "login_view",
+        template: Handlebars.compile(loginTemplate),
         
         events: {
             "click #facebook-sign-in": "submitFacebookSignin",
@@ -27,7 +26,7 @@ define([
         },
         
         render: function() {
-            $(this.el).html(template());
+            $(this.el).html(this.template());
         },
         
         submitFacebookSignin: function() {

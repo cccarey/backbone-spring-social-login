@@ -8,10 +8,9 @@ define([
 ], function($, _, Backbone, Handlebars, config, footerTemplate) {
     'use strict';
 
-    var template = Handlebars.compile(footerTemplate);
-
     return Backbone.View.extend({
         el: "#footer",
+        template: Handlebars.compile(footerTemplate),
 
         initialize: function(args) {
             _.bindAll(this, "render");
@@ -19,7 +18,7 @@ define([
         },
 
         render: function() {
-            $(this.el).html(template(this.model.toJSON()));
+            $(this.el).html(this.template(this.model.toJSON()));
         }
     });
 });
