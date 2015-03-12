@@ -20,10 +20,7 @@ define([
 
         events: {
         	"click #edit": "handleEditClick",
-            "click #back": "handleBackClick",
-            "click #show-connections": "showConnections",
-            "click #facebook-sign-in": "submitFacebookSignin",
-            "click #google-sign-in": "submitGoogleSignin"
+            "click #back": "handleBackClick"
         },
 
         initialize: function(args) {
@@ -53,7 +50,7 @@ define([
         },
         
         addProvider: function(item) {
-            var view = new connectionsView({ model: item });
+            var view = new connectionsView({ model: item, displayName: this.displayName });
             this.connectionsViews.push(view);
             $("#connections", this.el).append(view.el);
         },
@@ -62,18 +59,6 @@ define([
             this.closeAndRemoveItemViews();
         },
         
-        submitFacebookSignin: function() {
-            $("#sign-in", this.el).attr("action", "/connect/facebook");
-            $("#sign-in #scope", this.el).attr("value", "public_profile,email");
-            $("#sign-in", this.el).submit();
-        },
-
-        submitGoogleSignin: function() {
-            $("#sign-in", this.el).attr("action", "/connect/google");
-            $("#sign-in #scope", this.el).attr("value", "openid profile email");
-            $("#sign-in", this.el).submit();
-        },
-
         // TODO: refactor to a prototype function in loader
         addProviders: function(list) {
             this.closeAndRemoveItemViews();

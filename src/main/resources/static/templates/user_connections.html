@@ -1,20 +1,9 @@
 <div class="col-lg-4">
     <a class="btn btn-block btn-social btn-{{providerClass}}"
-        id="{{providerClass}}-sign-in"><i class="fa fa-{{providerClass}}">
-        </i>Connect to a <b>{{displayName}}</b> account
+        id="sign-in-button"><i class="fa fa-{{providerClass}}">
+        </i>Connect a <b>{{displayName}}</b> account
     </a>
 </div>
-<div id="connection-{{model.providerId}}-accounts">
-    <div id="connection-{{model.providerId}}-account-1234">
-	    <div class="form-group">
-            <label class="col-lg-2 control-label" for="providerUserId">Provider User ID</label>
-            <div class="col-lg-10 form-control-static" id="providerUserId">1234</div>
-	    </div>
-    </div>
-    <div id="connection-{{model.providerId}}-account-5678">
-        <div class="form-group">
-            <label class="col-lg-2 control-label" for="providerUserId">Provider User ID</label>
-            <div class="col-lg-10 form-control-static" id="providerUserId">5678</div>
-        </div>
-    </div>
+<div class="col-lg-8">
+    <div id="connection-{{model.providerId}}-accounts">No {{displayName}} accounts connected</div>
 </div>

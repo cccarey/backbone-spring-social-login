@@ -1,0 +1,8 @@
+<div class="panel-heading">
+    <h3 class="panel-title">User ID: {{model.key.providerUserId}}</h3>
+</div>
+<div class="panel-body">
+    {{#if model.displayName}}<p>{{model.displayName}}</p>{{/if}}
+    <p><img src="{{model.imageUrl}}" alt="Profile Picture" /></p>
+    <p><a href="{{model.profileUrl}}" target="_blank">On {{displayName}}</a></p>
+</div>
