@@ -1,20 +1,27 @@
 package com.christiancarey.bsfacebook.signin;
 
+import java.util.List;
+
 import javax.inject.Inject;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.web.WebAttributes;
 import org.springframework.security.web.savedrequest.RequestCache;
 import org.springframework.security.web.savedrequest.SavedRequest;
 import org.springframework.social.connect.Connection;
+import org.springframework.social.connect.UsersConnectionRepository;
 import org.springframework.social.connect.web.SignInAdapter;
 import org.springframework.web.context.request.NativeWebRequest;
 
 public class ImplicitSignInAdapter implements SignInAdapter {
 
     private final RequestCache requestCache;
+    
+    @Autowired
+    private UsersConnectionRepository usersConnectionRepository;
 
     @Inject
     public ImplicitSignInAdapter(RequestCache requestCache) {
@@ -23,8 +30,15 @@ public class ImplicitSignInAdapter implements SignInAdapter {
     
     @Override
     public String signIn(String localUserId, Connection<?> connection, NativeWebRequest request) {
-        String providerUserId = connection.getKey().getProviderUserId();
-        SignInUtils.signin(providerUserId);
+    	List<String> userIds = usersConnectionRepository.findUserIdsWithConnection(connection);
+    	String userId = null;
+    	if (userIds.size() == 1) {
+    		userId = userIds.get(0);
+    	}
+    	else {
+    		userId = connection.getKey().getProviderUserId();
+    	}
+        SignInUtils.signin(userId);
         return extractOriginalUrl(request);
     }
 
