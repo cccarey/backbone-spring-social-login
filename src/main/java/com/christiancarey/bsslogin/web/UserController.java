@@ -1,4 +1,4 @@
-package com.christiancarey.bsfacebook.web;
+package com.christiancarey.bsslogin.web;
 
 import java.security.Principal;
 
@@ -10,8 +10,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.christiancarey.bsfacebook.domain.User;
-import com.christiancarey.bsfacebook.repositories.jpa.UserJpaRepository;
+import com.christiancarey.bsslogin.domain.User;
+import com.christiancarey.bsslogin.repositories.jpa.UserJpaRepository;
 
 @RestController
 @RequestMapping(value = "/api/user")

@@ -1,4 +1,4 @@
-package com.christiancarey.bsfacebook.domain;
+package com.christiancarey.bsslogin.domain;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;

@@ -1,4 +1,4 @@
-package com.christiancarey.bsfacebook;
+package com.christiancarey.bsslogin;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

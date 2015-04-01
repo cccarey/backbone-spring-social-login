@@ -1,4 +1,4 @@
-package com.christiancarey.bsfacebook.web;
+package com.christiancarey.bsslogin.web;
 
 import javax.inject.Inject;
 

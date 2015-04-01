@@ -1,4 +1,4 @@
-package com.christiancarey.bsfacebook.domain;
+package com.christiancarey.bsslogin.domain;
 
 import java.util.ArrayList;
 import java.util.List;

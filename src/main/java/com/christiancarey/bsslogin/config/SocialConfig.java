@@ -1,4 +1,4 @@
-package com.christiancarey.bsfacebook.config;
+package com.christiancarey.bsslogin.config;
 
 import javax.sql.DataSource;
 
@@ -18,9 +18,9 @@ import org.springframework.social.connect.web.SignInAdapter;
 import org.springframework.social.facebook.connect.FacebookConnectionFactory;
 import org.springframework.social.google.connect.GoogleConnectionFactory;
 
-import com.christiancarey.bsfacebook.repositories.jpa.UserJpaRepository;
-import com.christiancarey.bsfacebook.signin.AccountConnectionSignup;
-import com.christiancarey.bsfacebook.signin.ImplicitSignInAdapter;
+import com.christiancarey.bsslogin.repositories.jpa.UserJpaRepository;
+import com.christiancarey.bsslogin.signin.AccountConnectionSignup;
+import com.christiancarey.bsslogin.signin.ImplicitSignInAdapter;
 
 @Configuration
 @EnableSocial

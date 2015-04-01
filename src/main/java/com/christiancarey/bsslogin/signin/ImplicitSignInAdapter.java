@@ -1,4 +1,4 @@
-package com.christiancarey.bsfacebook.signin;
+package com.christiancarey.bsslogin.signin;
 
 import java.util.List;
 

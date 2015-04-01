@@ -1,4 +1,4 @@
-package com.christiancarey.bsfacebook.config;
+package com.christiancarey.bsslogin.config;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
