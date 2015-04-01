@@ -1,4 +1,4 @@
-package com.christiancarey.bsslogin.repositories.jpa;
+package com.christiancarey.bsslogin.repositories;
 
 import java.util.Optional;
 

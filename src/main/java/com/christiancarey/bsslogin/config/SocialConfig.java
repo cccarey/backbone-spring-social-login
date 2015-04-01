@@ -18,7 +18,7 @@ import org.springframework.social.connect.web.SignInAdapter;
 import org.springframework.social.facebook.connect.FacebookConnectionFactory;
 import org.springframework.social.google.connect.GoogleConnectionFactory;
 
-import com.christiancarey.bsslogin.repositories.jpa.UserJpaRepository;
+import com.christiancarey.bsslogin.repositories.UserJpaRepository;
 import com.christiancarey.bsslogin.signin.AccountConnectionSignup;
 import com.christiancarey.bsslogin.signin.ImplicitSignInAdapter;
 
