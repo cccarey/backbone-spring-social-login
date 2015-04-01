@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.christiancarey.bsslogin.domain.User;
+import com.christiancarey.bsslogin.models.User;
 import com.christiancarey.bsslogin.repositories.jpa.UserJpaRepository;
 
 @RestController

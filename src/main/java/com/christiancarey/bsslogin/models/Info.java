@@ -1,4 +1,4 @@
-package com.christiancarey.bsslogin.domain;
+package com.christiancarey.bsslogin.models;
 
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;

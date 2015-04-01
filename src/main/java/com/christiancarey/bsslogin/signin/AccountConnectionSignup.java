@@ -4,7 +4,7 @@ import org.springframework.social.connect.Connection;
 import org.springframework.social.connect.ConnectionSignUp;
 import org.springframework.social.connect.UserProfile;
 
-import com.christiancarey.bsslogin.domain.User;
+import com.christiancarey.bsslogin.models.User;
 import com.christiancarey.bsslogin.repositories.jpa.UserJpaRepository;
 
 public class AccountConnectionSignup implements ConnectionSignUp {
