@@ -1,4 +1,4 @@
-package com.christiancarey.bsslogin.web;
+package com.christiancarey.bsslogin.api;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
