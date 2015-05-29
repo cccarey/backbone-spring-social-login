@@ -64,5 +64,3 @@ Saves user information. See `/user - GET` for request and response payload examp
 
 Logs the user out of the application
 
-> See [Python Social Auth documentation](http://psa.matiasaguirre.net/) for additional
-> API calls.
