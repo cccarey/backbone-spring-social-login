@@ -14,7 +14,7 @@ import com.christiancarey.bsslogin.models.User;
 import com.christiancarey.bsslogin.repositories.UserJpaRepository;
 
 @RestController
-@RequestMapping(value = "/api/user")
+@RequestMapping(value = "/user")
 public class UserController {
     private UserJpaRepository userRepository;
     
@@ -25,6 +25,7 @@ public class UserController {
     
     @RequestMapping(method = RequestMethod.GET)
     ResponseEntity<User> user(Principal currentUser) throws Exception {
+    	if (currentUser == null) { return new ResponseEntity<>(HttpStatus.FORBIDDEN); }
         User user = getCurrentUserData(currentUser);
         return new ResponseEntity<>(user, HttpStatus.OK);
     }
