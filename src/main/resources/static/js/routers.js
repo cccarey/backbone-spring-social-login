@@ -40,13 +40,13 @@ define([
             stupidFacebook: function() {
                 this.navigate("", {trigger: true, replace: true});
             },
-            
+
             processLogout: function() {
             	var self = this;
-                $.ajax({ 
-                	url: "signout", 
-                	type: "GET", 
-                	success: function() { 
+                $.ajax({
+                	url: config.apiBase + "signout",
+                	type: "GET",
+                	success: function() {
                 		self.user = new models.user({ onNoAuth: self.onNoAuth });
                 		self.navigate("", {trigger: true, replace: true});
             		}

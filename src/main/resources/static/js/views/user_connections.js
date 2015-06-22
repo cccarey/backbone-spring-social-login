@@ -1,7 +1,7 @@
 define([
     'jquery',
-    'lib/underscore', 
-    'lib/backbone', 
+    'lib/underscore',
+    'lib/backbone',
     'lib/handlebars',
     'config',
     'models/loader',
@@ -9,45 +9,45 @@ define([
     'text!../../templates/user_connections.html',
 ], function($, _, Backbone, Handlebars, config, models, connectionView, userConnectionsTemplate) {
     'use strict';
-    
+
     return Backbone.View.extend({
         id: function() { return "connection-" + this.model.get("providerId"); },
         tagName: "div",
         className: "row well",
-        
+
         template: Handlebars.compile(userConnectionsTemplate),
-        
+
         events: {
             "click #sign-in-button": "submitSignIn"
         },
 
         initialize: function() {
-            _.bindAll(this, 
-                "addConnections", 
-                "addConnection", 
-                "onClose", 
+            _.bindAll(this,
+                "addConnections",
+                "addConnection",
+                "onClose",
                 "closeAndRemoveItemViews");
-            this.providerClass = (this.model.get("providerId") === "google") ? 
-                    "google-plus" : 
+            this.providerClass = (this.model.get("providerId") === "google") ?
+                    "google-plus" :
                     this.model.get("providerId");
-            this.displayName = (this.model.get("providerId") === "google") ? 
-                    "Google+" : 
+            this.displayName = (this.model.get("providerId") === "google") ?
+                    "Google+" :
                     "Facebook";
             this.signInUrl = (this.model.get("providerId") === "google") ?
-                "/connect/google" :
-                "/connect/facebook";
+                config.apiBase + "/connect/google" :
+                config.apiBase + "/connect/facebook";
             this.signInScope = (this.model.get("providerId") === "google") ?
                 "openid profile email" :
                 "public_profile,email";
             this.connectionViews = [];
             this.render();
         },
-        
+
         render: function() {
-            $(this.el).html(this.template({ 
+            $(this.el).html(this.template({
                 model: this.model.toJSON(),
                 providerClass: this.providerClass,
-                displayName: this.displayName 
+                displayName: this.displayName
             }));
             if (this.model.get("connections").models && this.model.get("connections").models.length > 0) {
                 $("#".concat(this.id(), "-accounts"), this.el).html("");
@@ -60,7 +60,7 @@ define([
             this.connectionViews.push(view);
             $("#".concat(this.id(), "-accounts"), this.el).append(view.el);
         },
-        
+
         onClose: function() {
             this.closeAndRemoveItemViews();
         },
