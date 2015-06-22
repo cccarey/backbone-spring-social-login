@@ -21,7 +21,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.christiancarey.bsslogin.models.Connections;
 
 @RestController
-@RequestMapping(value = "/api/connect")
+@RequestMapping(value = "/user/connect")
 public class RestJSONConnectionController {
     private ConnectionRepository connectionRepository;
     private ConnectionFactoryLocator connectionFactoryLocator;

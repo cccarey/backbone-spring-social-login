@@ -14,6 +14,7 @@ import org.springframework.social.connect.ConnectionFactoryLocator;
 import org.springframework.social.connect.UsersConnectionRepository;
 import org.springframework.social.connect.jdbc.JdbcUsersConnectionRepository;
 import org.springframework.social.connect.support.ConnectionFactoryRegistry;
+import org.springframework.social.connect.web.ProviderSignInController;
 import org.springframework.social.connect.web.SignInAdapter;
 import org.springframework.social.facebook.connect.FacebookConnectionFactory;
 import org.springframework.social.google.connect.GoogleConnectionFactory;
@@ -40,6 +41,18 @@ public class SocialConfig extends SocialConfigurerAdapter {
         JdbcUsersConnectionRepository repository = new JdbcUsersConnectionRepository(dataSource, connectionFactoryLocator(), Encryptors.noOpText());
         repository.setConnectionSignUp(new AccountConnectionSignup(this.userRepository));
         return repository;
+    }
+    
+    @Bean
+    public ProviderSignInController providerSignInController() {
+    	ProviderSignInController controller = new ProviderSignInController(
+    			this.connectionFactoryLocator(),
+    			this.usersConnectionRepository(),
+    			this.signInAdapter()
+			);
+    	controller.setApplicationUrl(environment.getProperty("spring.social.applicationUrl"));
+    	controller.setPostSignInUrl(environment.getProperty("spring.social.postSignInUrl"));
+    	return controller;
     }
 
     @Bean
